@@ -3,3 +3,7 @@ window.MOUT_CONFIG = {
   supabaseUrl: 'https://oyoacuakzwsvxmzcckot.supabase.co',
   supabaseAnonKey: 'sb_publishable_9E_Hf168dkeWJIQbhgHCKg_DEPsWQc7'
 };
+(function(){
+  var css=document.createElement('link');css.rel='stylesheet';css.href='enhancements.css';document.head.appendChild(css);
+  var s=document.createElement('script');s.src='enhancements.js';s.onload=function(){var p=document.createElement('script');p.src='finalpatch.js';document.body.appendChild(p)};document.body.appendChild(s);
+})();
