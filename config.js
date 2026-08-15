@@ -21,6 +21,20 @@ window.MOUT_CONFIG = {
   document.head.appendChild(css);
 })();
 
+/* The UI calls the darker theme "Dark mode" even though the stored legacy key remains "black". */
+(function () {
+  function renameThemeButton() {
+    const b = document.getElementById('themeToggle');
+    if (!b) return;
+    b.textContent = document.body.classList.contains('black-mode') ? 'Light mode' : 'Dark mode';
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renameThemeButton, {once:true});
+  else renameThemeButton();
+  const observer = new MutationObserver(renameThemeButton);
+  observer.observe(document.documentElement, {attributes:true,subtree:true,attributeFilter:['class']});
+  setInterval(renameThemeButton, 500);
+})();
+
 /* Collection-desk account directory. Only appears after the private collection-desk login. */
 (function () {
   const CONTROL = 'https://oyoacuakzwsvxmzcckot.supabase.co/functions/v1/museum-control';
