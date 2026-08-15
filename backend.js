@@ -5,6 +5,8 @@
   const client = window.supabase.createClient(window.MOUT_CONFIG.supabaseUrl, window.MOUT_CONFIG.supabaseAnonKey);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+  const nav=$('.site-header nav');
+  if(nav && !$('#accountButton')){const b=document.createElement('button');b.className='text-button';b.id='accountButton';b.textContent='Account';nav.appendChild(b)}
   const modal = document.createElement('div');
   modal.id='accountModal'; modal.className='modal-backdrop'; modal.setAttribute('aria-hidden','true');
   modal.innerHTML=`<div class="modal submit-modal" role="dialog" aria-modal="true"><button class="modal-close" id="accountClose" aria-label="Close">×</button><p class="eyebrow">Contributor archive</p><h2>Enter the museum.</h2><p class="modal-intro">Accounts are only an identity for returning to your contributions. Published artifacts remain public.</p><div id="accountBody"></div></div>`;
