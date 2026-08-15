@@ -1,0 +1,4 @@
+/* Backend integration placeholder.
+   The full frontend can be connected using SETUP.md and supabase.sql.
+   This file intentionally contains no secret keys.
+*/
