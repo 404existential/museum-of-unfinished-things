@@ -1,8 +1,5 @@
-/* Museum of Unfinished Things — Supabase client configuration.
-   Replace the two values below after creating your Supabase project.
-   Never put a Supabase service_role key in this file. The anon/publishable key is the only key that belongs in the browser.
-*/
+/* Museum of Unfinished Things — public browser configuration. Never put a service_role key here. */
 window.MOUT_CONFIG = {
-  supabaseUrl: 'YOUR_SUPABASE_PROJECT_URL',
-  supabaseAnonKey: 'YOUR_SUPABASE_ANON_OR_PUBLISHABLE_KEY'
+  supabaseUrl: 'https://oyoacuakzwsvxmzcckot.supabase.co',
+  supabaseAnonKey: 'sb_publishable_9E_Hf168dkeWJIQbhgHCKg_DEPsWQc7'
 };
