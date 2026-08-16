@@ -61,11 +61,7 @@ window.MOUT_CONFIG = {
       list.hidden = false;
       list.textContent = 'Loading identities…';
       try {
-        const r = await fetch(CONTROL, {
-          method:'POST',
-          headers:{'content-type':'application/json'},
-          body:JSON.stringify({action:'accounts',token})
-        });
+        const r = await fetch(CONTROL, {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'accounts',token})});
         const j = await r.json();
         if (!r.ok || j.error) throw new Error(j.error || 'Unable to load accounts');
         if (!j.data.length) { list.textContent = 'No contributor identities yet'; return; }
@@ -73,9 +69,7 @@ window.MOUT_CONFIG = {
           const name = String(p.username || 'Unnamed').replace(/[&<>"']/g, function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[c]});
           return `<div style="padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.72rem">${name}</div>`;
         }).join('');
-      } catch (e) {
-        list.textContent = e.message || 'Unable to load accounts';
-      }
+      } catch (e) { list.textContent = e.message || 'Unable to load accounts'; }
     };
   }
   function watch() {
@@ -89,53 +83,27 @@ window.MOUT_CONFIG = {
   else watch();
 })();
 
-/* Reliable feedback fallback: opens the visitor's mail app with the museum feedback pre-addressed. */
+/* Reliable feedback fallback retained for legacy markup. */
 (function () {
   function bindFeedback() {
     const form = document.getElementById('feedbackForm');
     const status = document.getElementById('feedbackStatus');
     if (!form || form.dataset.feedbackBound === 'true') return;
     form.dataset.feedbackBound = 'true';
-
     form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-
-      const data = new FormData(form);
-      const subject = String(data.get('subject') || 'General feedback').trim();
-      const message = String(data.get('message') || '').trim();
-
-      if (!message) {
-        if (status) status.textContent = 'Please write a note before sending';
-        return;
-      }
-
-      const body = [
-        'Museum of Unfinished Things — correspondence',
-        '',
-        'Subject: ' + subject,
-        '',
-        message,
-        '',
-        'Sent from the Museum of Unfinished Things website'
-      ].join('\n');
-
-      const mailto = 'mailto:therajin2@gmail.com' +
-        '?subject=' + encodeURIComponent('[Museum] ' + subject) +
-        '&body=' + encodeURIComponent(body);
-
+      event.preventDefault(); event.stopImmediatePropagation();
+      const data = new FormData(form), subject = String(data.get('subject') || 'General feedback').trim(), message = String(data.get('message') || '').trim();
+      if (!message) { if (status) status.textContent = 'Please write a note before sending'; return; }
+      const body = ['Museum of Unfinished Things — correspondence','', 'Subject: ' + subject,'',message,'','Sent from the Museum of Unfinished Things website'].join('\n');
       if (status) status.textContent = 'Opening your email app…';
-      window.location.href = mailto;
-
-      setTimeout(function () {
-        if (status) status.textContent = 'If your email app did not open, please check that a default mail app is configured';
-      }, 1800);
+      window.location.href = 'mailto:therajin2@gmail.com?subject=' + encodeURIComponent('[Museum] ' + subject) + '&body=' + encodeURIComponent(body);
     }, true);
   }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindFeedback, {once:true}); else bindFeedback();
+})();
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindFeedback, { once: true });
-  } else {
-    bindFeedback();
-  }
+/* Load the current small V4 layer after the existing app. */
+(function () {
+  const load = () => { if (!document.querySelector('script[data-museum-v4]')) { const s=document.createElement('script'); s.src='museum-v4.js'; s.dataset.museumV4='true'; document.body.appendChild(s); } };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load, {once:true}); else load();
 })();
