@@ -32,20 +32,35 @@
 #collection .artifact-card:before{content:'RECORD';position:absolute;left:-8px;bottom:-14px;background:#f4bd2e;color:#171513;border:2px solid var(--ink);padding:5px 9px;font:800 .55rem var(--mono);letter-spacing:.14em;z-index:3;transform:rotate(-4deg)}
 #collection .artifact-card:nth-child(2n):before{background:#ef5b4d;transform:rotate(3deg)}
 #collection .artifact-card:nth-child(3n):before{background:#5b8de8;transform:rotate(-3deg)}
-
-/* remove the old millisecond clock even if cached markup exists */
 .local-clock{display:none!important}
 
-/* record modal: turn it into an archival poster */
+/* stronger colour separation for every archive record */
+#collection .artifact-card:nth-child(6n+1){background:#ffd166!important}
+#collection .artifact-card:nth-child(6n+2){background:#06d6a0!important}
+#collection .artifact-card:nth-child(6n+3){background:#ef476f!important}
+#collection .artifact-card:nth-child(6n+4){background:#118ab2!important}
+#collection .artifact-card:nth-child(6n+5){background:#8338ec!important;color:#fff!important}
+#collection .artifact-card:nth-child(6n){background:#ff7b00!important}
+#collection .artifact-card:nth-child(6n+5) .card-info,#collection .artifact-card:nth-child(6n+5) .eyebrow{color:#fff!important}
+#collection .artifact-card:nth-child(6n+5) .card-status{background:#fff!important;color:#171513!important}
+#collection .artifact-visual.visual-red{background:#ef476f!important;color:#171513}
+#collection .artifact-visual.visual-blue{background:#118ab2!important;color:#fff}
+#collection .artifact-visual.visual-green{background:#06d6a0!important;color:#171513}
+#collection .artifact-visual.visual-yellow{background:#ffd166!important;color:#171513}
+#collection .artifact-visual.visual-paper{background:#f5e6c8!important;color:#171513}
+#collection .artifact-visual.visual-dark{background:#171513!important;color:#fff}
+
+/* record modal: readable horizontal writing */
 .record-modal{border:5px solid var(--ink)!important;box-shadow:18px 18px 0 var(--ink)!important;background:#fff7ea!important}
 .record-modal .record-header{border-bottom:5px solid var(--ink);padding-bottom:20px}
 .record-modal .record-header h2{font-family:var(--sans);font-weight:900;text-transform:uppercase;letter-spacing:-.065em}
 .record-modal .record-meta{border:3px solid var(--ink);margin:24px 0;grid-template-columns:repeat(4,1fr);background:#e7d7bd}
 .record-modal .record-meta div{border-right:3px solid var(--ink)}
 .record-modal .record-meta strong{font-family:var(--sans);font-weight:900;text-transform:uppercase}
-.record-modal .record-reading{font-family:var(--sans);font-size:1.25rem;line-height:1.65;font-weight:600;max-width:820px}
+.record-modal .record-reading{display:block!important;width:100%!important;max-width:none!important;writing-mode:horizontal-tb!important;text-orientation:mixed!important;white-space:pre-line!important;word-break:normal!important;overflow-wrap:normal!important;column-count:1!important;columns:1!important;font-family:var(--sans)!important;font-size:clamp(1.05rem,1.5vw,1.35rem)!important;line-height:1.75!important;font-weight:600!important;letter-spacing:0!important}
 .record-modal .record-extra{border-top:3px solid var(--ink)}
 .record-modal .record-extra p{font-family:var(--sans);font-weight:600;color:var(--ink)}
+.record-modal #recordDescription,.record-modal [id*="Description"]{display:none!important}
 
 @media(max-width:900px){#collection .artifact-card{grid-column:span 6}#collection .collection-grid{gap:24px 16px}}
-@media(max-width:600px){#collection .artifact-card{grid-column:1/-1}#collection .section-heading{display:block}#collection .collection-count{display:inline-block;margin-top:20px}.record-modal .record-meta{grid-template-columns:repeat(2,1fr)}#collection .artifact-visual{min-height:220px}}
+@media(max-width:600px){#collection .artifact-card{grid-column:1/-1}#collection .section-heading{display:block}#collection .collection-count{display:inline-block;margin-top:20px}.record-modal .record-meta{grid-template-columns:repeat(2,1fr)}#collection .artifact-visual{min-height:220px}.record-modal .record-reading{font-size:1.05rem!important;line-height:1.7!important}}
