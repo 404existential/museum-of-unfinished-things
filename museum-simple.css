@@ -1,8 +1,6 @@
 .floating-post{position:fixed;right:22px;bottom:22px;z-index:80;width:54px;height:54px;border:1px solid currentColor;border-radius:50%;background:var(--paper,#f1eee6);color:var(--ink,#151515);font:400 30px/1 'DM Sans',sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.14);cursor:pointer}.floating-post:hover{transform:translateY(-2px)}
 .black-mode .floating-post{background:#111;color:#f3f0e8;border-color:#777}
 .desk-list{display:grid;gap:10px;margin:22px 0}.desk-item{border-top:1px solid var(--line,#aaa);padding:12px 0}.desk-item summary{cursor:pointer;display:flex;gap:10px;justify-content:space-between;font-family:'DM Mono',monospace;font-size:.8rem;list-style:none}.desk-item summary::-webkit-details-marker{display:none}.desk-item summary span{opacity:.6}.desk-form{display:grid;gap:12px;padding:18px 0}.desk-form label{display:grid;gap:6px;font:500 .72rem 'DM Mono',monospace;text-transform:uppercase}.desk-form input,.desk-form textarea,.desk-form select{font:400 .95rem 'DM Sans',sans-serif;padding:10px;border:1px solid var(--line,#aaa);background:transparent;color:inherit}.desk-form textarea{resize:vertical}.identity-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}.avatar-preview{width:70px;height:70px;border-radius:50%;overflow:hidden;border:1px solid currentColor}.avatar-preview img{width:100%;height:100%;object-fit:cover}
-
-/* archive maximalism */
 #collection{position:relative;overflow:hidden;background:#f7efe1;padding-top:9vw;padding-bottom:11vw}
 #collection:before{content:'ARCHIVE / ARCHIVE / ARCHIVE / ARCHIVE';position:absolute;top:1.5vw;left:-2vw;font:700 clamp(3rem,10vw,10rem)/.75 var(--sans);letter-spacing:-.08em;color:#171513;opacity:.055;white-space:nowrap;pointer-events:none;transform:rotate(-2deg)}
 #collection .section-heading{position:relative;z-index:2;margin-bottom:42px;border-bottom:8px solid var(--ink);padding-bottom:22px}
@@ -33,15 +31,14 @@
 #collection .artifact-card:nth-child(2n):before{background:#ef5b4d;transform:rotate(3deg)}
 #collection .artifact-card:nth-child(3n):before{background:#5b8de8;transform:rotate(-3deg)}
 .local-clock{display:none!important}
-
-/* stronger colour separation for every archive record */
 #collection .artifact-card:nth-child(6n+1){background:#ffd166!important}
 #collection .artifact-card:nth-child(6n+2){background:#06d6a0!important}
 #collection .artifact-card:nth-child(6n+3){background:#ef476f!important}
-#collection .artifact-card:nth-child(6n+4){background:#118ab2!important}
-#collection .artifact-card:nth-child(6n+5){background:#8338ec!important;color:#fff!important}
+#collection .artifact-card:nth-child(6n+4){background:#118ab2!important;color:#fff}
+#collection .artifact-card:nth-child(6n+5){background:#8338ec!important;color:#fff}
 #collection .artifact-card:nth-child(6n){background:#ff7b00!important}
-#collection .artifact-card:nth-child(6n+5) .card-info,#collection .artifact-card:nth-child(6n+5) .eyebrow{color:#fff!important}
+#collection .artifact-card:nth-child(6n+4) .card-info,#collection .artifact-card:nth-child(6n+4) .card-title{color:#fff}
+#collection .artifact-card:nth-child(6n+5) .card-info,#collection .artifact-card:nth-child(6n+5) .card-title{color:#fff}
 #collection .artifact-card:nth-child(6n+5) .card-status{background:#fff!important;color:#171513!important}
 #collection .artifact-visual.visual-red{background:#ef476f!important;color:#171513}
 #collection .artifact-visual.visual-blue{background:#118ab2!important;color:#fff}
@@ -49,8 +46,6 @@
 #collection .artifact-visual.visual-yellow{background:#ffd166!important;color:#171513}
 #collection .artifact-visual.visual-paper{background:#f5e6c8!important;color:#171513}
 #collection .artifact-visual.visual-dark{background:#171513!important;color:#fff}
-
-/* record modal: readable horizontal writing */
 .record-modal{border:5px solid var(--ink)!important;box-shadow:18px 18px 0 var(--ink)!important;background:#fff7ea!important}
 .record-modal .record-header{border-bottom:5px solid var(--ink);padding-bottom:20px}
 .record-modal .record-header h2{font-family:var(--sans);font-weight:900;text-transform:uppercase;letter-spacing:-.065em}
@@ -62,5 +57,76 @@
 .record-modal .record-extra p{font-family:var(--sans);font-weight:600;color:var(--ink)}
 .record-modal #recordDescription,.record-modal [id*="Description"]{display:none!important}
 
-@media(max-width:900px){#collection .artifact-card{grid-column:span 6}#collection .collection-grid{gap:24px 16px}}
-@media(max-width:600px){#collection .artifact-card{grid-column:1/-1}#collection .section-heading{display:block}#collection .collection-count{display:inline-block;margin-top:20px}.record-modal .record-meta{grid-template-columns:repeat(2,1fr)}#collection .artifact-visual{min-height:220px}.record-modal .record-reading{font-size:1.05rem!important;line-height:1.7!important}}
+/* 50-item visual overhaul */
+#collection .artifact-card:nth-child(2n+1){border-radius:4px 18px 4px 18px}
+#collection .artifact-card:nth-child(2n){border-radius:18px 4px 18px 4px}
+#collection .artifact-card:nth-child(3n){padding-top:6px}
+#collection .artifact-card:nth-child(4n){padding-bottom:6px}
+#collection .artifact-card:nth-child(5n){letter-spacing:.01em}
+#collection .artifact-card:nth-child(6n){box-shadow:18px 18px 0 #111}
+#collection .artifact-card:nth-child(7n){transform:rotate(3deg)}
+#collection .artifact-card:nth-child(8n){transform:rotate(-3deg)}
+#collection .artifact-card:nth-child(9n){margin-top:30px}
+#collection .artifact-card:nth-child(10n){margin-top:-18px}
+#collection .artifact-card:nth-child(11n){border-style:dashed}
+#collection .artifact-card:nth-child(12n){border-width:7px}
+#collection .artifact-card:nth-child(13n){outline:3px solid #ff3b30;outline-offset:6px}
+#collection .artifact-card:nth-child(14n){outline:3px solid #6c4cff;outline-offset:-9px}
+#collection .artifact-card:nth-child(15n){box-shadow:-14px 14px 0 #ff3b30}
+#collection .artifact-card:nth-child(16n){box-shadow:14px -12px 0 #6c4cff}
+#collection .artifact-card:nth-child(17n) .visual-title{transform:skewX(-7deg)}
+#collection .artifact-card:nth-child(18n) .visual-title{transform:rotate(-4deg)}
+#collection .artifact-card:nth-child(19n) .visual-title{font-style:italic}
+#collection .artifact-card:nth-child(20n) .visual-title{text-decoration:underline;text-decoration-thickness:4px}
+#collection .artifact-card:nth-child(21n) .card-title{text-decoration:line-through;text-decoration-thickness:3px}
+#collection .artifact-card:nth-child(22n) .card-info{font-size:.68rem}
+#collection .artifact-card:nth-child(23n) .card-status{border-radius:999px}
+#collection .artifact-card:nth-child(24n) .card-status{transform:rotate(-8deg)}
+#collection .artifact-card:nth-child(25n) .card-status{transform:rotate(8deg)}
+#collection .artifact-card:nth-child(26n) .eyebrow{border-radius:999px}
+#collection .artifact-card:nth-child(27n) .eyebrow{transform:rotate(-2deg)}
+#collection .artifact-card:nth-child(28n) .eyebrow{transform:rotate(2deg)}
+#collection .artifact-card:nth-child(29n) .artifact-visual{min-height:315px}
+#collection .artifact-card:nth-child(30n) .artifact-visual{min-height:210px}
+#collection .artifact-card:nth-child(31n) .card-meta{background:rgba(255,255,255,.25)}
+#collection .artifact-card:nth-child(32n) .card-meta{background:rgba(0,0,0,.08)}
+#collection .artifact-card:nth-child(33n) .card-title{font-size:1.7rem}
+#collection .artifact-card:nth-child(34n) .card-title{font-size:1.15rem}
+#collection .artifact-card:nth-child(35n){clip-path:polygon(0 2%,97% 0,100% 98%,2% 100%)}
+#collection .artifact-card:nth-child(36n){border-radius:30px}
+#collection .artifact-card:nth-child(37n){background:linear-gradient(135deg,#ffcf33 0 50%,#ff5c52 50%)!important}
+#collection .artifact-card:nth-child(38n){background:linear-gradient(45deg,#55c9ff 0 50%,#8eea9b 50%)!important}
+#collection .artifact-card:nth-child(39n){background:repeating-linear-gradient(0deg,#ff6bb5 0 12px,#fff 12px 24px)!important}
+#collection .artifact-card:nth-child(40n){background:repeating-linear-gradient(90deg,#5ee0a0 0 12px,#fff 12px 24px)!important}
+#collection .artifact-card:nth-child(41n){border-color:#ff1493}
+#collection .artifact-card:nth-child(42n){border-color:#00a86b}
+#collection .artifact-card:nth-child(43n){border-color:#ffcf33}
+#collection .artifact-card:nth-child(44n){border-color:#5b8cff}
+#collection .artifact-card:nth-child(45n){border-color:#8338ec}
+#collection .artifact-card:nth-child(46n) .artifact-visual{border-bottom-style:dashed}
+#collection .artifact-card:nth-child(47n) .card-meta{border-top:5px double #111}
+#collection .artifact-card:nth-child(48n) .card-info{letter-spacing:.15em}
+#collection .artifact-card:nth-child(49n) .card-title{letter-spacing:.04em}
+#collection .artifact-card:nth-child(50n){min-height:540px}
+#collection .artifact-card:hover{filter:saturate(1.08)}
+#collection .artifact-card:focus-visible{outline:5px solid #ffcf33;outline-offset:8px}
+#collection .artifact-visual{display:flex;flex-direction:column;justify-content:space-between}
+#collection .visual-title{max-width:100%;overflow-wrap:anywhere}
+#collection .card-meta{min-height:155px;align-content:space-between}
+#collection .card-status{white-space:nowrap}
+#collection .collection-grid{padding:8px 8px 35px}
+#collection .filters{display:flex;flex-wrap:wrap}
+#collection .filter{padding:9px 13px}
+#collection .search input{width:100%;box-sizing:border-box}
+#collection .archive-tools{border-radius:2px 22px 2px 22px}
+#collection .section-heading{position:relative}
+#collection .section-heading:after{content:'✳';font-size:clamp(4rem,9vw,9rem);position:absolute;right:2%;top:-30%;color:#ff3b30;transform:rotate(17deg);pointer-events:none}
+.record-modal .record-reading p{margin:0 0 1.25em}
+.record-modal .record-reading{min-height:180px;text-rendering:optimizeLegibility}
+.record-modal .record-meta strong{font-size:1.05rem}
+.record-modal .record-meta span{font-family:var(--mono);font-size:.68rem;text-transform:uppercase}
+.record-modal .record-extra{padding-top:22px}
+.record-modal .record-extra:before{content:'ARCHIVE NOTE';display:block;font:900 .65rem var(--mono);letter-spacing:.16em;color:#ff3b30;margin-bottom:8px}
+#clockTime,#clockDate,.clock-time,.clock-date,.local-clock,.milliseconds{display:none!important}
+@media(max-width:900px){#collection .artifact-card{grid-column:span 6}.record-modal .record-reading{font-size:1.05rem;line-height:1.75}}
+@media(max-width:600px){#collection .artifact-card{grid-column:1/-1}.record-modal .record-meta{grid-template-columns:repeat(2,1fr)}#collection .artifact-visual{min-height:220px}.record-modal .record-reading{font-size:1rem;line-height:1.7}.collection-grid{padding-inline:0!important}}
