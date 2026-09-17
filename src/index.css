@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #050505;
+    color: #f5f2e8;
+  }
+
+  body {
+    background-color: #050505;
+    color: #f5f2e8;
+    overflow-x: hidden;
+  }
+
+  /* Custom Maximalist Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050505;
+    border-left: 2px solid #f5f2e8;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d7ff00;
+    border: 2px solid #000000;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff3b9d;
+  }
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 26s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Print Catalog Stylesheet */
+@media print {
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10pt;
+  }
+
+  header,
+  footer,
+  .animate-marquee,
+  button,
+  input,
+  select,
+  [role="dialog"],
+  .fixed {
+    display: none !important;
+  }
+
+  #collection {
+    padding: 0 !important;
+  }
+
+  article {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 2pt solid #000000 !important;
+    margin-bottom: 24pt !important;
+    transform: none !important;
+  }
+}
