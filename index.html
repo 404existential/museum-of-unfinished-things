@@ -1,28 +1,608 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Museum of Unfinished Things — a public archive of work that stopped before its intended conclusion">
-<meta name="theme-color" content="#f1eee6"><title>The Museum of Unfinished Things</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="museum-simple.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Museum of Unfinished Things — A Public Digital Archive</title>
+  <meta name="description" content="A public digital institution devoted to preserving the evidence of intention: unlaunched software, unwritten chapters, abandoned businesses, unrecorded songs, and unmade art.">
+  <meta name="theme-color" content="#f8f6f0">
+
+  <!-- OpenGraph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Museum of Unfinished Things">
+  <meta property="og:description" content="Everything here was once intended to become something else. A public archive of work that stopped before its conclusion.">
+  <meta property="og:url" content="https://404existential.github.io/museum-of-unfinished-things/">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
 </head>
-<body><div class="grain" aria-hidden="true"></div>
-<header class="site-header"><a class="wordmark" href="#top" aria-label="The Museum of Unfinished Things"><span>THE MUSEUM</span><strong>OF UNFINISHED<br>THINGS</strong></a><nav id="mainNav" aria-label="Main navigation"><a href="#collection">Collection</a><a href="#exhibitions">Exhibitions</a><a href="#about">About</a><button class="nav-button" id="accountButton">Account</button></nav><div class="header-tools"><button class="theme-toggle" id="themeToggle" type="button">Black mode</button><button class="menu-button" id="menuButton" type="button">Menu</button></div></header>
-<main id="top">
-<section class="hero section-pad"><div class="hero-copy"><p class="eyebrow">A public digital archive / Est. 2026</p><h1>Everything here was once intended to become something else.</h1><p class="hero-lede">Projects, books, songs, businesses, films, ideas and other things that stopped somewhere before the end.</p><div class="hero-actions"><a class="button button-dark" href="#collection">Enter the collection <span>↘</span></a></div></div><div class="hero-object"><div class="museum-mark">THE<br>MUSEUM<br><em>OF</em><br>UNFINISHED<br>THINGS</div><div class="paper-stack"><div class="paper paper-back"></div><div class="paper paper-mid"></div><div class="paper paper-front"><span class="paper-number">A—004218</span><div class="paper-title">A RECORD<br>WITHOUT<br>AN END</div><div class="paper-note">unfinished<br>since 2023</div><div class="paper-line"></div></div></div><p class="object-caption">A—004218 / Software / Unattended</p></div></section>
-<section class="ticker"><div>THE MUSEUM DOES NOT PRESERVE SUCCESS</div><div>IT PRESERVES EVIDENCE OF INTENTION</div><div>THE MUSEUM DOES NOT PRESERVE SUCCESS</div></section>
-<section id="collection" class="collection section-pad"><div class="section-heading collection-heading"><div><p class="eyebrow">The permanent collection</p><h2>Records in the archive</h2></div><p class="collection-count"><strong id="artifactCount">0</strong> stories presently held</p></div><div class="archive-tools"><label class="search"><span>Search the collection</span><input id="searchInput" type="search" placeholder="title, category, accession, words…" autocomplete="off"></label><div class="filters" id="filters"></div></div><div id="collectionGrid" class="collection-grid"></div><div id="emptyState" class="empty-state" hidden><p class="eyebrow">No records found</p><h3>The requested story is not presently in the collection</h3><button class="button button-outline" id="clearFilters">Clear filters</button></div></section>
-<section id="exhibitions" class="exhibitions section-pad"><div class="section-heading"><div><p class="eyebrow">Curated exhibitions</p><h2>Temporary arrangements of permanent things</h2></div></div><div class="exhibition-grid"><article class="exhibition-card exhibition-red"><span class="exhibition-no">EXHIBITION 01 / 2026</span><h3>Never<br>Launched</h3><p>Projects built, prepared and polished for a launch that never arrived. The surviving records are full of release dates, renamed folders and one final adjustment that became another final adjustment</p><button data-exhibition="Software">Read the records ↗</button></article><article class="exhibition-card exhibition-paper"><span class="exhibition-no">EXHIBITION 02 / 2026</span><h3>Chapter<br>Seven</h3><p>Writing projects that stopped in the middle of becoming themselves. Pages survive with crossed-out sentences, missing chapters and endings that were still being negotiated when the writing stopped</p><button data-exhibition="Writing">Read the records ↗</button></article><article class="exhibition-card exhibition-dark"><span class="exhibition-no">EXHIBITION 03 / 2026</span><h3>Almost<br>a Business</h3><p>Plans that reached names, spreadsheets, suppliers and projections without reaching a first customer. The numbers remain unusually confident for things that never opened</p><button data-exhibition="Business">Read the records ↗</button></article></div></section>
-<section class="manifesto"><div class="manifesto-number">∞</div><div><p class="eyebrow">Museum note</p><h2>Every unfinished thing is evidence that someone once imagined a finished version</h2></div></section>
-<section id="about" class="about section-pad"><div class="about-grid"><div><p class="eyebrow">About the museum</p><h2>We preserve the evidence of intention</h2></div><div class="about-copy"><p>The Museum of Unfinished Things is a public digital archive devoted to work that stopped before its intended conclusion</p><p>A half-written novel. A prototype that never shipped. A business plan abandoned in a folder. A photograph that never became a series</p><p>Nothing here is presented as a lesson about productivity. The record is enough</p><div class="museum-stats"><div><strong id="statRecords">0</strong><span>stories presently held</span></div><div><strong>195</strong><span>countries in the world</span></div><div><strong>∞</strong><span>collection range</span></div></div></div></div></section>
-</main>
-<footer class="site-footer"><div><div class="wordmark footer-mark"><span>THE MUSEUM</span><strong>OF UNFINISHED THINGS</strong></div><p>Everything here was once intended to become something else</p></div><div class="footer-meta"><span>Digital institution / 2026</span><span>Public records / living collection</span></div></footer>
-<button class="floating-post" id="floatingPost" type="button" aria-label="Post a story" title="Post a story">＋</button>
-<div class="modal-backdrop" id="recordModal" aria-hidden="true"><div class="modal record-modal" role="dialog" aria-modal="true" aria-labelledby="recordTitle"><button class="modal-close" data-close-modal aria-label="Close">×</button><div class="record-header"><div><p class="eyebrow" id="recordAccession">ACCESSION A—000000</p><h2 id="recordTitle">Record</h2></div><button class="share-trigger" id="shareTrigger">Share ↗</button></div><div class="record-meta" id="recordMeta"></div><div class="record-reading" id="recordText"></div><div class="record-extra"><div><span class="eyebrow">Why it stopped</span><p id="recordNote"></p></div></div><div class="record-footer"><span id="recordContributor"></span><button class="button button-outline" id="recordShareBottom">Share this record ↗</button></div></div></div>
-<div class="modal-backdrop" id="shareModal" aria-hidden="true"><div class="modal share-modal" role="dialog" aria-modal="true" aria-labelledby="shareTitle"><button class="modal-close" data-close-modal aria-label="Close">×</button><p class="eyebrow">Public record</p><h2 id="shareTitle">Share this record</h2><div class="share-card" id="shareCard"><div class="share-card-top">THE MUSEUM OF UNFINISHED THINGS</div><div class="share-card-title" id="shareCardTitle">Record</div><div class="share-card-bottom"><span id="shareCardAccession">A—000000</span><span id="shareCardUser">Anonymous</span></div></div><div class="share-actions"><button data-share="instagram">Instagram</button><button data-share="whatsapp">WhatsApp</button><button data-share="x">X</button><button data-share="copy">Copy link</button></div></div></div>
-<div class="modal-backdrop" id="submitModal" aria-hidden="true"><div class="modal submit-modal" role="dialog" aria-modal="true" aria-labelledby="submitTitle"><button class="modal-close" data-close-modal aria-label="Close">×</button><p class="eyebrow">Archive intake</p><h2 id="submitTitle">Leave a record</h2><p class="modal-intro">A short form. Nothing here needs to be finished</p><form id="submitForm"><div class="form-grid"><label>Title<input name="title" required maxlength="120"></label><label>Category<select name="category" required><option value="">Select</option></select></label><label>Year started<input name="year" type="number" min="1900" max="2100"></label><label>Last worked on<input name="lastWorked" type="date"></label></div><label>Why did it stop?<textarea name="reason" rows="3"></textarea></label><label>The story<textarea name="text" rows="12" required placeholder="Write what remains. Stop wherever it stopped"></textarea></label><label>Display name<input name="username" id="submitUsername" placeholder="Your username or Anonymous"></label><label class="check-row"><input type="checkbox" name="anonymous"><span>Keep it anonymous</span></label><button class="button button-dark" type="submit">Add to the collection <span>↗</span></button><p id="submitStatus" class="form-status" aria-live="polite"></p></form><div id="receipt" class="receipt" hidden><p class="eyebrow">Record received</p><div class="receipt-number" id="receiptNumber">A—000000</div><p>Your story has been added to the collection</p><button class="button button-outline" data-close-modal>Return to museum</button></div></div></div>
-<div class="modal-backdrop" id="accountModal" aria-hidden="true"><div class="modal submit-modal" role="dialog" aria-modal="true" aria-labelledby="accountTitle"><button class="modal-close" data-close-modal aria-label="Close">×</button><p class="eyebrow">Contributor archive</p><h2 id="accountTitle">Your archive identity</h2><div id="accountContent"></div></div></div>
-<script src="config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="app.js"></script>
-</body></html>
+<body>
+  <!-- Tactile Archival Grain -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="site-container">
+      <a href="#top" class="wordmark" aria-label="The Museum of Unfinished Things">
+        <span class="wordmark-sub">THE MUSEUM</span>
+        <strong class="wordmark-main">OF UNFINISHED THINGS</strong>
+      </a>
+
+      <nav id="siteNav" class="site-nav" aria-label="Main Navigation">
+        <a href="#exhibitions">Exhibitions</a>
+        <a href="#collection">Collection</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#about">About</a>
+        <button type="button" id="openAccountBtn">Contributor Desk</button>
+      </nav>
+
+      <div class="header-tools">
+        <!-- Live Clock -->
+        <div class="header-clock" id="headerClock" title="Archive Greenwich Mean Time">
+          <span class="clock-live-indicator"></span>
+          <span id="clockDisplay">00:00:00 UTC</span>
+        </div>
+
+        <!-- Ambient Sound Toggle -->
+        <button type="button" class="tool-button" id="audioToggleBtn" title="Toggle tactile sound effects" aria-label="Toggle sound">
+          <span class="tool-icon">🔇</span>
+          <span id="audioStatusText">Sound Off</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button type="button" class="tool-button" id="themeToggleBtn" title="Toggle Nocturne Vault Mode" aria-label="Toggle theme">
+          <span class="tool-icon" id="themeIcon">☾</span>
+          <span id="themeStatusText">Nocturne</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button type="button" class="tool-button mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          <span>☰</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="site-container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="eyebrow">A Public Digital Institution / Est. 2026</span>
+            <h1 class="hero-title">Everything here was once intended to become something else.</h1>
+            <p class="hero-lede">
+              A permanent digital archive of projects, manuscripts, records, businesses, films, prototypes and ambitions that stopped somewhere before their intended conclusion.
+            </p>
+            <div class="hero-actions">
+              <a href="#collection" class="btn btn-primary">
+                <span>Enter the Collection</span>
+                <span>↘</span>
+              </a>
+              <button type="button" class="btn btn-outline" id="heroDepositBtn">
+                <span>Deposit a Record</span>
+                <span>＋</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive 3D Paper Stack -->
+          <div class="hero-visual">
+            <div class="paper-stack-container" id="heroPaperStack" title="Click to inspect specimen record">
+              <div class="paper-sheet sheet-back"></div>
+              <div class="paper-sheet sheet-mid"></div>
+              <div class="paper-sheet sheet-front">
+                <span class="sheet-number">ACCESSION A—004218</span>
+                <div class="sheet-title">A RECORD<br>WITHOUT<br>AN END</div>
+                <div class="sheet-meta">Software / Unattended Since 2023</div>
+              </div>
+            </div>
+            <span class="visual-caption">Specimen A—004218 / Intention Preserved</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifesto Ticker Strip -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-content" id="tickerContent">
+        <span class="ticker-item">The Museum Does Not Preserve Success</span>
+        <span class="ticker-item">It Preserves Evidence of Intention</span>
+        <span class="ticker-item">The Record Is Enough</span>
+        <span class="ticker-item">No Lessons in Productivity</span>
+        <span class="ticker-item">Work That Stopped Before The End</span>
+        <span class="ticker-item">The Museum Does Not Preserve Success</span>
+        <span class="ticker-item">It Preserves Evidence of Intention</span>
+        <span class="ticker-item">The Record Is Enough</span>
+      </div>
+    </div>
+
+    <!-- Curated Exhibitions -->
+    <section id="exhibitions" class="exhibitions-section section-pad">
+      <div class="site-container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Curated Wings / 2026</span>
+            <h2 class="section-head-title">Temporary arrangements of permanent things</h2>
+          </div>
+          <span class="section-head-count">3 Curated Wings</span>
+        </div>
+
+        <div class="exhibition-grid">
+          <!-- Wing 1 -->
+          <article class="exhibition-card wing-red" data-wing-filter="Software" tabindex="0" role="button" aria-label="View Never Launched exhibition">
+            <div>
+              <span class="exhibition-wing-tag">Exhibition 01 / Code & Platforms</span>
+              <h3 class="exhibition-title">Never<br>Launched</h3>
+              <p class="exhibition-desc">
+                Software, tools, and startups built and polished for a launch day that never arrived. Surviving folders contain release roadmaps, renamed branches, and one final adjustment that led to another.
+              </p>
+            </div>
+            <span class="exhibition-link">Explore Software Records ↗</span>
+          </article>
+
+          <!-- Wing 2 -->
+          <article class="exhibition-card wing-paper" data-wing-filter="Writing" tabindex="0" role="button" aria-label="View Chapter Seven exhibition">
+            <div>
+              <span class="exhibition-wing-tag">Exhibition 02 / Manuscripts & Verse</span>
+              <h3 class="exhibition-title">Chapter<br>Seven</h3>
+              <p class="exhibition-desc">
+                Manuscripts, novels, and poetry collections that ceased mid-sentence. Pages survive with crossed-out passages, character maps, and endings that were still being negotiated when writing stopped.
+              </p>
+            </div>
+            <span class="exhibition-link">Explore Writing Records ↗</span>
+          </article>
+
+          <!-- Wing 3 -->
+          <article class="exhibition-card wing-dark" data-wing-filter="Business" tabindex="0" role="button" aria-label="View Almost a Business exhibition">
+            <div>
+              <span class="exhibition-wing-tag">Exhibition 03 / Commerce & Ventures</span>
+              <h3 class="exhibition-title">Almost a<br>Business</h3>
+              <p class="exhibition-desc">
+                Enterprises that reached registered domain names, financial models, supplier agreements, and sample runs without serving a single customer. The spreadsheets remain confident.
+              </p>
+            </div>
+            <span class="exhibition-link">Explore Business Records ↗</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Permanent Collection -->
+    <section id="collection" class="collection-section section-pad">
+      <div class="site-container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">The Permanent Collection</span>
+            <h2 class="section-head-title">Records in the Archive</h2>
+          </div>
+          <span class="section-head-count">
+            <strong id="artifactTotalCount">0</strong> Stories Held
+          </span>
+        </div>
+
+        <!-- Archive Toolbar -->
+        <div class="archive-toolbar">
+          <div class="search-field-wrapper">
+            <input type="search" id="archiveSearchInput" placeholder="Search by title, category, accession code, or fragment..." autocomplete="off">
+            <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Clear search">✕</button>
+          </div>
+
+          <div class="filters-row">
+            <div class="category-filters" id="categoryFilters">
+              <!-- Rendered via JS -->
+            </div>
+
+            <div class="toolbar-controls">
+              <select id="sortSelect" class="sort-select" aria-label="Sort collection records">
+                <option value="accession-desc">Newest Accession</option>
+                <option value="year-asc">Oldest Year Started</option>
+                <option value="year-desc">Most Recent Year</option>
+                <option value="tributes">Most Witnessed 🕯️</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collection Grid -->
+        <div class="collection-grid" id="collectionGrid">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-archive" id="emptyState" hidden>
+          <span class="eyebrow">Accession Search</span>
+          <h3>No Records Found</h3>
+          <p>The requested fragment, category, or accession code is not presently cataloged in the public collection.</p>
+          <button type="button" class="btn btn-outline" id="resetFiltersBtn">Reset Archive Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy / Manifesto -->
+    <section id="philosophy" class="manifesto-section section-pad">
+      <div class="site-container">
+        <div class="manifesto-grid">
+          <div class="manifesto-symbol">∞</div>
+          <div>
+            <span class="eyebrow" style="color: rgba(255,255,255,0.6);">Museum Credo</span>
+            <h2 class="manifesto-quote">Every unfinished thing is proof that someone once imagined a finished version.</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section & Metrics -->
+    <section id="about" class="about-section section-pad">
+      <div class="site-container">
+        <div class="about-grid">
+          <div>
+            <span class="eyebrow">Institution Profile</span>
+            <h2 class="section-head-title">We preserve the evidence of intention.</h2>
+          </div>
+
+          <div class="about-prose">
+            <p>
+              The Museum of Unfinished Things is a public digital institution created to hold work that stopped before its intended conclusion: a half-written novel, a startup that never launched, an unrecorded melody, an abandoned algorithm, an architectural blueprint without a building.
+            </p>
+            <p>
+              Nothing here is presented as cautionary, nor as a lesson in productivity or perseverance. The record itself is sufficient. In human creative life, the decision to stop is as genuine as the decision to begin.
+            </p>
+
+            <div class="museum-metrics">
+              <div class="metric-cell">
+                <strong class="metric-value" id="metricTotal">13</strong>
+                <span class="metric-label">Accessions Preserved</span>
+              </div>
+              <div class="metric-cell">
+                <strong class="metric-value">195</strong>
+                <span class="metric-label">Global Nations</span>
+              </div>
+              <div class="metric-cell">
+                <strong class="metric-value">∞</strong>
+                <span class="metric-label">Archival Horizon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-top">
+        <div>
+          <div class="wordmark">
+            <span class="wordmark-sub">THE MUSEUM</span>
+            <strong class="wordmark-main">OF UNFINISHED THINGS</strong>
+          </div>
+          <p class="footer-credo">
+            Everything here was once intended to become something else.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <span class="footer-col-title">Archive</span>
+            <a href="#exhibitions">Exhibitions</a>
+            <a href="#collection">Permanent Collection</a>
+            <a href="#philosophy">Credo</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-title">Participation</span>
+            <a href="#" id="footerDepositLink">Deposit Record</a>
+            <a href="#" id="footerDeskLink">Contributor Desk</a>
+            <a href="https://github.com/404existential/museum-of-unfinished-things" target="_blank" rel="noopener">GitHub Repository</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Public Digital Institution / Est. 2026</span>
+        <span>Living collection. Anonymous & attributed public records.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Button -->
+  <button type="button" class="floating-deposit-btn" id="floatingDepositBtn" aria-label="Deposit a record into the museum">
+    <span class="floating-deposit-icon">＋</span>
+    <span>Deposit a Record</span>
+  </button>
+
+  <!-- ==========================================================================
+       MODAL 1: READING ROOM (ARTIFACT DETAIL)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="readingModal" role="dialog" aria-modal="true" aria-labelledby="readingTitle" aria-hidden="true">
+    <div class="modal-window">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close reading room">✕</button>
+
+      <div class="reading-room-header">
+        <span class="reading-accession" id="readingAccession">ACCESSION A—000000</span>
+        <h2 class="reading-title" id="readingTitle">Record Title</h2>
+
+        <div class="provenance-table">
+          <div class="provenance-item">
+            <span>Category</span>
+            <strong id="readingCategory">—</strong>
+          </div>
+          <div class="provenance-item">
+            <span>Year Started</span>
+            <strong id="readingYear">—</strong>
+          </div>
+          <div class="provenance-item">
+            <span>Status</span>
+            <strong id="readingStatus">—</strong>
+          </div>
+          <div class="provenance-item">
+            <span>Contributor</span>
+            <strong id="readingContributor">Anonymous</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Body -->
+      <div class="reading-story-content" id="readingStory">
+        <!-- Story text inserted via JS -->
+      </div>
+
+      <!-- Marginalia Callout -->
+      <div class="marginalia-box" id="readingMarginaliaBox">
+        <h4>Why it stopped</h4>
+        <p id="readingReason">No recorded reason remains in the documentation.</p>
+      </div>
+
+      <!-- Reading Room Footer -->
+      <div class="reading-room-footer">
+        <button type="button" class="tribute-action-btn" id="readingTributeBtn">
+          <span>🕯️</span>
+          <span id="readingTributeLabel">Witness Intention (0)</span>
+        </button>
+
+        <div style="display: flex; gap: 0.75rem;">
+          <button type="button" class="btn btn-outline" id="readingShareBtn">
+            <span>Archival Certificate</span>
+            <span>↗</span>
+          </button>
+          <button type="button" class="btn btn-primary" data-close-modal>
+            <span>Return to Archive</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: INTAKE / DEPOSIT FORM (WITH LIVE PREVIEW)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="depositModal" role="dialog" aria-modal="true" aria-labelledby="depositTitle" aria-hidden="true">
+    <div class="modal-window" style="max-width: 1040px;">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close deposit form">✕</button>
+
+      <div id="depositFormView">
+        <span class="eyebrow">Archival Intake</span>
+        <h2 id="depositTitle" style="font-size: 2.2rem; margin-bottom: 0.5rem;">Deposit an Unfinished Record</h2>
+        <p style="color: var(--ink-secondary); margin-bottom: 2rem;">
+          Preserve your abandoned project, draft, experiment or ambition. Nothing deposited here is required to be finished.
+        </p>
+
+        <div class="intake-layout">
+          <!-- Form -->
+          <form id="depositForm" class="intake-form-column">
+            <div class="form-group">
+              <label for="inputTitle">Title of the Work *</label>
+              <input type="text" id="inputTitle" name="title" required maxlength="120" placeholder="e.g., The Third Version of a Novel">
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="inputCategory">Category *</label>
+                <select id="inputCategory" name="category" required>
+                  <option value="">Select Category</option>
+                  <option value="Writing">Writing</option>
+                  <option value="Software">Software</option>
+                  <option value="Business">Business</option>
+                  <option value="Music">Music</option>
+                  <option value="Art">Art</option>
+                  <option value="Film">Film</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Research">Research</option>
+                  <option value="Invention">Invention</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="inputYear">Year Started</label>
+                <input type="number" id="inputYear" name="year" min="1900" max="2100" value="2024">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputReason">Why Did It Stop? *</label>
+              <textarea id="inputReason" name="reason" rows="2" required placeholder="Exams approached, money ran out, or the spark vanished..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="inputStory">The Story / Remaining Fragments *</label>
+              <textarea id="inputStory" name="story" rows="6" required placeholder="Write what survived. Chapter outlines, the first scene, the failed equation, or the last thing you remember..."></textarea>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="inputAuthor">Contributor Name / Moniker</label>
+                <input type="text" id="inputAuthor" name="author" placeholder="Anonymous or your username">
+              </div>
+
+              <div class="form-group" style="justify-content: flex-end; padding-bottom: 0.5rem;">
+                <label class="form-check-row">
+                  <input type="checkbox" id="checkAnonymous" name="anonymous">
+                  <span>Record as Anonymous</span>
+                </label>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+              <button type="submit" class="btn btn-seal" id="depositSubmitBtn">
+                <span>Add to Permanent Archive</span>
+                <span>↗</span>
+              </button>
+              <button type="button" class="btn btn-outline" data-close-modal>Cancel</button>
+            </div>
+            <p id="depositStatusMsg" class="eyebrow" style="margin-top: 0.5rem;"></p>
+          </form>
+
+          <!-- Live Preview Column -->
+          <div class="intake-preview-column">
+            <span class="preview-badge-label">Real-time Archival Card Preview</span>
+            <div class="live-preview-card" id="livePreviewCard">
+              <div class="card-visual-header vis-red" id="previewHeader">
+                <span class="card-accession-tag" id="previewAccession">A—PROVISIONAL</span>
+                <h3 class="card-display-title" id="previewTitleDisplay">Untitled Record</h3>
+              </div>
+              <div class="card-body">
+                <div class="card-meta-row">
+                  <span class="card-category-year" id="previewMeta">Writing / 2024</span>
+                  <span class="card-status-badge">Unattended</span>
+                </div>
+                <p class="card-excerpt" id="previewExcerpt">Your story summary will appear here as you type...</p>
+                <div class="card-footer">
+                  <span id="previewAuthorDisplay">Anonymous</span>
+                  <span>🕯️ 0 witnessed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deposit Success View (Receipt) -->
+      <div id="depositReceiptView" class="intake-receipt" hidden>
+        <span class="eyebrow">Accession Confirmed</span>
+        <h2>Your Record Is Now Preserved</h2>
+        <p>The accession code has been permanently stamped into the museum register.</p>
+        <div class="receipt-accession-stamp" id="receiptAccession">A—000000</div>
+        <p style="color: var(--ink-muted); max-width: 480px; margin: 0 auto 2rem auto;">
+          Future visitors will witness your intention.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem;">
+          <button type="button" class="btn btn-primary" id="viewNewRecordBtn">View in Reading Room</button>
+          <button type="button" class="btn btn-outline" data-close-modal>Return to Archive</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: ARCHIVAL CERTIFICATE GENERATOR (SHARE)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareTitle" aria-hidden="true">
+    <div class="modal-window share-modal-window">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close share dialog">✕</button>
+
+      <span class="eyebrow">Accession Certificate</span>
+      <h2 id="shareTitle" style="font-size: 2rem; margin-bottom: 0.5rem;">Archival Certificate</h2>
+      <p style="color: var(--ink-secondary); font-size: 0.95rem;">
+        Generate and export a digital exhibition certificate for this accession.
+      </p>
+
+      <div class="certificate-canvas-container">
+        <canvas id="certificateCanvas" width="1200" height="630"></canvas>
+      </div>
+
+      <div class="share-actions-grid">
+        <button type="button" class="tool-button" id="downloadCertBtn">
+          <span>↓ Download PNG</span>
+        </button>
+        <button type="button" class="tool-button" id="copyCitationBtn">
+          <span>⎘ Copy Link</span>
+        </button>
+        <button type="button" class="tool-button" id="shareXBtn">
+          <span>Post to X</span>
+        </button>
+        <button type="button" class="tool-button" id="shareWhatsAppBtn">
+          <span>WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 4: CONTRIBUTOR VAULT & CURATOR DESK
+       ========================================================================== -->
+  <div class="modal-backdrop" id="accountModal" role="dialog" aria-modal="true" aria-labelledby="accountTitle" aria-hidden="true">
+    <div class="modal-window">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close desk">✕</button>
+
+      <span class="eyebrow">Museum Governance</span>
+      <h2 id="accountTitle" style="font-size: 2.2rem; margin-bottom: 1.5rem;">Contributor Desk</h2>
+
+      <div class="account-tabs">
+        <button type="button" class="account-tab-btn active" id="tabMyRecords">My Accessions</button>
+        <button type="button" class="account-tab-btn" id="tabCuratorDesk">Curator Controls</button>
+      </div>
+
+      <!-- Tab 1: My Records -->
+      <div id="accountRecordsView">
+        <p style="color: var(--ink-secondary); margin-bottom: 1.5rem;">
+          Records you have deposited from this device and network session.
+        </p>
+        <div id="myRecordsList">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Tab 2: Curator Desk (Admin Tools) -->
+      <div id="curatorDeskView" hidden>
+        <div id="curatorAuthArea">
+          <p style="color: var(--ink-secondary); margin-bottom: 1rem;">
+            Authenticate as chief curator (<code style="font-family: var(--font-mono);">404existential</code>) or enter curator access pass to manage records:
+          </p>
+          <div style="display: flex; gap: 0.75rem; max-width: 420px; margin-bottom: 1.5rem;">
+            <input type="password" id="curatorPassInput" placeholder="Curator access key" style="flex: 1; padding: 0.6rem; border: 1px solid var(--border-strong); font-family: var(--font-mono);">
+            <button type="button" class="btn btn-primary" id="curatorLoginBtn">Sign In</button>
+          </div>
+        </div>
+
+        <div id="curatorAdminTable" hidden>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <strong>Curator Access Granted</strong>
+            <button type="button" class="btn btn-outline" id="curatorLogoutBtn">Sign Out</button>
+          </div>
+          <div class="curator-table-wrapper">
+            <table class="curator-table" id="curatorTable">
+              <thead>
+                <tr>
+                  <th>Accession</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="curatorTableBody">
+                <!-- Records populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toastNotification" aria-live="polite"></div>
+
+  <!-- Client Scripts -->
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>

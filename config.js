@@ -1,6 +1,13 @@
-/* Museum of Unfinished Things — public browser configuration. Never put a service_role key here. */
-window.MOUT_CONFIG={supabaseUrl:'https://oyoacuakzwsvxmzcckot.supabase.co',supabaseAnonKey:'sb_publishable_9E_Hf168dkeWJIQbhgHCKg_DEPsWQc7'};
-(function(){try{if(!localStorage.getItem('mout-theme'))localStorage.setItem('mout-theme','black')}catch(_){}})();
-(function(){const css=document.createElement('style');css.textContent=`#floatingPost{background:#171513!important;color:#f1eee6!important;border-color:#171513!important}body.black-mode #floatingPost{background:#f1eee6!important;color:#171513!important;border-color:#f1eee6!important}`;document.head.appendChild(css)})();
-(function(){function rename(){const b=document.getElementById('themeToggle');if(b)b.textContent=document.body.classList.contains('black-mode')?'Light mode':'Dark mode'}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',rename,{once:true});else rename();new MutationObserver(rename).observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:['class']})})();
-(function(){const load=()=>{if(document.querySelector('script[data-mout-v5]'))return;const s=document.createElement('script');s.src='museum-v5.js?v=5';s.dataset.moutV5='true';document.body.appendChild(s)};window.addEventListener('load',load,{once:true})})();
+/**
+ * The Museum of Unfinished Things — Public Configuration
+ * 
+ * Provides connection settings to the public Supabase archive.
+ * Never place service_role keys or secrets in this client configuration.
+ */
+window.MOUT_CONFIG = {
+  supabaseUrl: 'https://oyoacuakzwsvxmzcckot.supabase.co',
+  supabaseAnonKey: 'sb_publishable_9E_Hf168dkeWJIQbhgHCKg_DEPsWQc7',
+  institutionName: 'The Museum of Unfinished Things',
+  establishedYear: 2026,
+  defaultTheme: 'light' // 'light' (Exhibition Paper & Ink) or 'dark' (Nocturne Vault)
+};
