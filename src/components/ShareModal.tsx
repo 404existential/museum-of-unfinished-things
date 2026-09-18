@@ -103,6 +103,17 @@ export const ShareModal: React.FC<ShareModalProps> = ({ artifact, onClose, onSho
     ctx.restore();
   }, [artifact]);
 
+  useEffect(() => {
+    if (!artifact) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [artifact, onClose]);
+
   if (!artifact) return null;
 
   const handleDownload = () => {
@@ -136,11 +147,20 @@ export const ShareModal: React.FC<ShareModalProps> = ({ artifact, onClose, onSho
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md overflow-y-auto">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md overflow-y-auto cursor-pointer"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          sound.play('click');
+          onClose();
+        }
+      }}
+    >
       <div 
-        className="relative w-full max-w-3xl bg-void border-4 border-paper p-6 md:p-8 shadow-brutal-modal my-auto text-left"
+        className="relative w-full max-w-3xl bg-void border-4 border-paper p-6 md:p-8 shadow-brutal-modal my-auto text-left cursor-default"
         role="dialog"
         aria-modal="true"
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"

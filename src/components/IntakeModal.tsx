@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Plus, CheckCircle } from 'lucide-react';
 import { Artifact, Category } from '../types';
 import { CATEGORIES_LIST } from '../data/initialRecords';
@@ -27,6 +27,17 @@ export const IntakeModal: React.FC<IntakeModalProps> = ({
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedArtifact, setSubmittedArtifact] = useState<Artifact | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        handleReset();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -94,11 +105,20 @@ export const IntakeModal: React.FC<IntakeModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md overflow-y-auto">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md overflow-y-auto cursor-pointer"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          sound.play('click');
+          handleReset();
+        }
+      }}
+    >
       <div 
-        className="relative w-full max-w-5xl bg-void border-4 border-paper p-6 md:p-10 shadow-brutal-modal max-h-[92vh] overflow-y-auto my-auto text-left"
+        className="relative w-full max-w-5xl bg-void border-4 border-paper p-6 md:p-10 shadow-brutal-modal max-h-[92vh] overflow-y-auto my-auto text-left cursor-default"
         role="dialog"
         aria-modal="true"
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button

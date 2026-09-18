@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Flame } from 'lucide-react';
 import { Artifact } from '../types';
 import { sound } from '../services/audio';
 
@@ -6,9 +7,19 @@ interface RecordCardProps {
   artifact: Artifact;
   index: number;
   onSelect: (artifact: Artifact) => void;
+  onTribute?: (id: string) => void;
+  isWitnessed?: boolean;
 }
 
-export const RecordCard: React.FC<RecordCardProps> = ({ artifact, index, onSelect }) => {
+export const RecordCard: React.FC<RecordCardProps> = ({
+  artifact,
+  index,
+  onSelect,
+  onTribute,
+  isWitnessed = false
+}) => {
+  const [burst, setBurst] = useState(false);
+
   // Shadow and accent mapping
   const shadowClasses: Record<string, string> = {
     pink: 'shadow-brutal-pink hover:shadow-brutal-acid',
@@ -34,6 +45,16 @@ export const RecordCard: React.FC<RecordCardProps> = ({ artifact, index, onSelec
   const shadowClass = shadowClasses[artifact.shadowColor || 'pink'] || 'shadow-brutal-pink';
 
   const paddedNumber = String(index + 1).padStart(2, '0');
+
+  const handleWitnessClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    sound.play('witness');
+    if (onTribute) {
+      onTribute(artifact.id);
+    }
+    setBurst(true);
+    setTimeout(() => setBurst(false), 900);
+  };
 
   return (
     <article
@@ -69,6 +90,15 @@ export const RecordCard: React.FC<RecordCardProps> = ({ artifact, index, onSelec
         RECORD // {paddedNumber}
       </div>
 
+      {/* Floating Burst Counter */}
+      {burst && (
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none animate-bounce">
+          <div className="bg-acid text-black font-mono font-black text-sm px-3 py-1 border-2 border-black shadow-brutal-pink rotate-[-4deg]">
+            +1 WITNESSED 🔥
+          </div>
+        </div>
+      )}
+
       {/* Card Header & Visual Title Block */}
       <div>
         <div className={`p-6 border-b-4 border-paper relative ${headerStyle}`}>
@@ -101,16 +131,31 @@ export const RecordCard: React.FC<RecordCardProps> = ({ artifact, index, onSelec
         </div>
       </div>
 
-      {/* Card Footer */}
+      {/* Card Footer with Quick Witness Tribute Button */}
       <div className="p-6 pt-0 border-t-2 border-paper/20 flex items-center justify-between font-mono text-xs text-paper/60">
-        <span className="truncate max-w-[150px]">
-          CONTRIBUTOR: <strong className="text-paper font-black">{artifact.username}</strong>
+        <span className="truncate max-w-[140px]">
+          BY: <strong className="text-paper font-black">{artifact.username}</strong>
         </span>
-        <span className="text-acid font-black text-xs flex items-center gap-1">
-          <span>🕯️</span>
+
+        {/* Upgraded Quick Witness Button */}
+        <button
+          type="button"
+          onClick={handleWitnessClick}
+          title={isWitnessed ? 'You have witnessed this intention (click to add reverence)' : 'Witness this intention'}
+          className={`group/btn relative px-2.5 py-1 border-2 transition-all flex items-center gap-1.5 font-black text-xs ${
+            isWitnessed
+              ? 'bg-acid text-black border-black shadow-sm'
+              : 'bg-black text-paper hover:bg-acid hover:text-black border-paper/50 hover:border-black'
+          }`}
+        >
+          <Flame className={`w-3.5 h-3.5 ${isWitnessed ? 'fill-black text-black' : 'text-acid group-hover/btn:fill-black group-hover/btn:text-black'}`} />
           <span>{artifact.tributes}</span>
-        </span>
+          <span className="hidden group-hover/btn:inline text-[10px] uppercase font-bold tracking-tight">
+            {isWitnessed ? 'HONOR' : 'WITNESS'}
+          </span>
+        </button>
       </div>
     </article>
   );
 };
+

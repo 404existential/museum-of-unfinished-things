@@ -1,6 +1,6 @@
 class AudioEngine {
   private ctx: AudioContext | null = null;
-  public enabled: boolean = false;
+  public enabled: boolean = true;
 
   private init() {
     if (!this.ctx) {
@@ -21,7 +21,7 @@ class AudioEngine {
     return this.enabled;
   }
 
-  public play(type: 'click' | 'thud' | 'chime' | 'paper') {
+  public play(type: 'click' | 'thud' | 'chime' | 'paper' | 'witness') {
     if (!this.enabled) return;
     try {
       this.init();
@@ -60,6 +60,44 @@ class AudioEngine {
         gain.connect(this.ctx.destination);
         osc.start(now);
         osc.stop(now + 0.4);
+      } else if (type === 'witness') {
+        // Warm harmonic cathedral bell / singing bowl chime for witnessing intention
+        const osc2 = this.ctx.createOscillator();
+        const osc3 = this.ctx.createOscillator();
+        const gain2 = this.ctx.createGain();
+        const gain3 = this.ctx.createGain();
+
+        // Fundamental A4 (440Hz)
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(440, now);
+        gain.gain.setValueAtTime(0.28, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
+
+        // Harmonic E5 (659.25Hz)
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(659.25, now);
+        gain2.gain.setValueAtTime(0.18, now);
+        gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.8);
+
+        // Harmonic A5 (880Hz)
+        osc3.type = 'triangle';
+        osc3.frequency.setValueAtTime(880, now);
+        gain3.gain.setValueAtTime(0.12, now);
+        gain3.gain.exponentialRampToValueAtTime(0.0001, now + 0.6);
+
+        osc.connect(gain);
+        osc2.connect(gain2);
+        osc3.connect(gain3);
+        gain.connect(this.ctx.destination);
+        gain2.connect(this.ctx.destination);
+        gain3.connect(this.ctx.destination);
+
+        osc.start(now);
+        osc2.start(now);
+        osc3.start(now);
+        osc.stop(now + 0.9);
+        osc2.stop(now + 0.8);
+        osc3.stop(now + 0.6);
       } else if (type === 'paper') {
         const bufferSize = this.ctx.sampleRate * 0.07;
         const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);

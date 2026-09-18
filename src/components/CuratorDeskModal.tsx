@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, ShieldAlert, Trash2, Eye, Download, CheckSquare } from 'lucide-react';
 import { Artifact } from '../types';
 import { sound } from '../services/audio';
@@ -24,6 +24,17 @@ export const CuratorDeskModal: React.FC<CuratorDeskModalProps> = ({
   const [passKey, setPassKey] = useState('');
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -77,11 +88,20 @@ export const CuratorDeskModal: React.FC<CuratorDeskModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md overflow-y-auto">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md overflow-y-auto cursor-pointer"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          sound.play('click');
+          onClose();
+        }
+      }}
+    >
       <div 
-        className="relative w-full max-w-4xl bg-void border-4 border-paper p-6 md:p-10 shadow-brutal-modal max-h-[90vh] overflow-y-auto my-auto text-left"
+        className="relative w-full max-w-4xl bg-void border-4 border-paper p-6 md:p-10 shadow-brutal-modal max-h-[90vh] overflow-y-auto my-auto text-left cursor-default"
         role="dialog"
         aria-modal="true"
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"

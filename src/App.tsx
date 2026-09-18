@@ -12,7 +12,16 @@ import { Toast } from './components/Toast';
 import { Artifact, Category } from './types';
 import { FOUNDATIONAL_RECORDS } from './data/initialRecords';
 import { fetchRemoteArtifacts, insertRemoteArtifact, updateRemoteArtifactStatus } from './services/supabase';
-import { getLocalStories, saveLocalStory, getLocalTributes, incrementLocalTribute } from './services/storage';
+import { 
+  getLocalStories, 
+  saveLocalStory, 
+  deleteLocalStory, 
+  getLocalTributes, 
+  incrementLocalTribute,
+  getUserWitnessedIds,
+  addUserWitnessedId
+} from './services/storage';
+import { sound } from './services/audio';
 
 export const App: React.FC = () => {
   const [records, setRecords] = useState<Artifact[]>(FOUNDATIONAL_RECORDS);
@@ -22,6 +31,7 @@ export const App: React.FC = () => {
   const [isIntakeOpen, setIsIntakeOpen] = useState<boolean>(false);
   const [isDeskOpen, setIsDeskOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [userWitnessedIds, setUserWitnessedIds] = useState<Set<string>>(new Set(getUserWitnessedIds()));
 
   // Show neon feedback toast
   const showToast = (msg: string) => {
@@ -53,11 +63,11 @@ export const App: React.FC = () => {
 
       setRecords(finalized);
 
-      // Check deep link hash
+      // Check deep link hash with hyphen/em-dash normalization
       const hash = decodeURIComponent(window.location.hash || '');
       if (hash.startsWith('#record=')) {
-        const targetId = hash.slice(8).trim();
-        const found = finalized.find((r) => r.id === targetId);
+        const targetId = hash.slice(8).trim().replace(/[—–-]/g, '-').toLowerCase();
+        const found = finalized.find((r) => r.id.replace(/[—–-]/g, '-').toLowerCase() === targetId);
         if (found) {
           setReadingArtifact(found);
         }
@@ -70,6 +80,8 @@ export const App: React.FC = () => {
   // Handle Tribute ("Witness Intention")
   const handleTribute = (id: string) => {
     incrementLocalTribute(id);
+    addUserWitnessedId(id);
+    setUserWitnessedIds((prev) => new Set([...prev, id]));
     setRecords((prev) =>
       prev.map((r) => (r.id === id ? { ...r, tributes: (r.tributes || 0) + 1 } : r))
     );
@@ -77,6 +89,15 @@ export const App: React.FC = () => {
       setReadingArtifact((prev) => (prev ? { ...prev, tributes: prev.tributes + 1 } : null));
     }
     showToast(`🕯️ INTENTION WITNESSED`);
+  };
+
+  // Serendipity / Random Record Discovery
+  const handleRandomRecord = () => {
+    if (records.length === 0) return;
+    const randomIndex = Math.floor(Math.random() * records.length);
+    const chosen = records[randomIndex];
+    setReadingArtifact(chosen);
+    showToast(`🎲 ORACULAR SELECTION: ${chosen.title}`);
   };
 
   // Handle New Submission
@@ -89,6 +110,7 @@ export const App: React.FC = () => {
 
   // Handle Record Withdrawal
   const handleWithdraw = async (id: string) => {
+    deleteLocalStory(id);
     await updateRemoteArtifactStatus(id, 'Withdrawn');
     setRecords((prev) => prev.filter((r) => r.id !== id));
     showToast(`RECORD ${id} WITHDRAWN`);
@@ -105,10 +127,9 @@ export const App: React.FC = () => {
       {/* Toast */}
       <Toast message={toastMessage} />
 
-      {/* Header */}
+      {/* Header (Cleaned: Time, Sound, and Desk removed) */}
       <Navbar
         onOpenDeposit={() => setIsIntakeOpen(true)}
-        onOpenDesk={() => setIsDeskOpen(true)}
         onShowToast={showToast}
       />
 
@@ -120,7 +141,7 @@ export const App: React.FC = () => {
             document.getElementById('collection')?.scrollIntoView({ behavior: 'smooth' });
           }}
           onSelectSpecimen={() => {
-            const specimen = records.find((r) => r.id === 'A—004218') || records[0];
+            const specimen = records.find((r) => r.id.includes('004218')) || records[0];
             setReadingArtifact(specimen);
           }}
         />
@@ -137,6 +158,9 @@ export const App: React.FC = () => {
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
           onSelectRecord={(artifact) => setReadingArtifact(artifact)}
+          onTribute={handleTribute}
+          onRandomRecord={handleRandomRecord}
+          userWitnessedIds={userWitnessedIds}
         />
 
         {/* Philosophy Credo Callout */}
@@ -183,6 +207,17 @@ export const App: React.FC = () => {
             >
               POST RECORD ＋
             </button>
+            <button
+              type="button"
+              onClick={() => {
+                sound.play('click');
+                setIsDeskOpen(true);
+              }}
+              className="hover:text-cyan transition-colors uppercase"
+              title="Open Curator & Contributor Desk"
+            >
+              CURATOR DESK ⚙
+            </button>
             <a
               href="https://github.com/404existential/museum-of-unfinished-things"
               target="_blank"
@@ -215,6 +250,8 @@ export const App: React.FC = () => {
           setReadingArtifact(null);
           setSharingArtifact(art);
         }}
+        onShowToast={showToast}
+        isWitnessed={readingArtifact ? userWitnessedIds.has(readingArtifact.id) : false}
       />
 
       <IntakeModal

@@ -39,7 +39,7 @@ export async function fetchRemoteArtifacts(): Promise<Artifact[]> {
         text: item.record_text || item.description || '',
         note: item.reason || item.contributor_note || 'Circumstances not documented.',
         username: item.contributor_username || 'Anonymous',
-        tributes: 10
+        tributes: typeof item.tributes === 'number' ? item.tributes : (item.witness_count || 1)
       };
     });
   } catch (err) {

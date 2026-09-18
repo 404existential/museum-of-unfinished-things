@@ -2,6 +2,27 @@ import { Artifact } from '../types';
 
 export const FOUNDATIONAL_RECORDS: Artifact[] = [
   {
+    id: 'A—004218',
+    title: 'A Record Without an End',
+    category: 'Software',
+    year: '2023',
+    status: 'Unattended',
+    visualColor: 'acid',
+    shadowColor: 'cyan',
+    rotation: '1.5deg',
+    description: 'A personal publishing framework and bespoke website revised fourteen times before the domain registration expired.',
+    text: `The project was conceived as an immutable digital garden for essays, unfinished thoughts, and speculative computing experiments.
+
+By version fourteen, the site possessed a custom-crafted typography hierarchy, an interactive spatial archive, a manifesto on impermanence, and a mysterious button leading to an unlinked route.
+
+The domain registration expired before the button was given a destination. The git repository was archived with the final commit message: "one last adjustment before launch."
+
+Nothing was ever published. The local development server still starts on port 5173 without errors.`,
+    note: 'By version fourteen the personal site had an identity, an archive, and a button leading nowhere. The domain expired before the button was given a purpose.',
+    username: 'archivist-01',
+    tributes: 84
+  },
+  {
     id: 'A—9835263',
     title: 'My Unfinished Book',
     category: 'Writing',
